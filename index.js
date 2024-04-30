@@ -57,15 +57,7 @@ async function run() {
       res.send(result);
     })
 
-    // image,
-    //   item_name,
-    //   subcategory_name,
-    //   short_description,
-    //   price,
-    //   rating,
-    //   customization,
-    //   processing_time,
-    //   stock_status,
+ 
 
     app.put("/update/:id", async(req, res)=>{
       const id = req.params.id;
