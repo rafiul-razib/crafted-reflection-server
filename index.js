@@ -25,10 +25,11 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
+    // await client.connect();
 
     const database = client.db("craftsDb");
     const craftsCollection = database.collection("crafts");
+    const categoryCollection = database.collection("categories");
 
 
     app.get("/crafts", async(req, res)=>{
@@ -48,6 +49,12 @@ async function run() {
         const product = req.body;
         const result = await craftsCollection.insertOne(product);
         res.send(result);
+    })
+
+    app.post("/category", async(req, res)=>{
+      const category = req.body;
+      const result = await categoryCollection.insertOne(category);
+      res.send(result);
     })
 
     app.delete("/crafts/:id", async(req, res)=>{
